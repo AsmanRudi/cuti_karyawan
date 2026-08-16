@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HR Portal - Pengajuan Cuti</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#a6b1fd",
+                        "secondary": "#4e599e",
+                        "inverse-surface": "#303035",
+                        "tertiary-fixed-dim": "#ffb59d",
+                        "tertiary-container": "#3d0d00",
+                        "outline-variant": "#c7c5d2",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "primary-container": "#121358",
+                        "tertiary": "#0e0100",
+                        "on-surface": "#1b1b20",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#dee0ff",
+                        "secondary-fixed-dim": "#bbc3ff",
+                        "surface-dim": "#dcd9df",
+                        "primary-fixed": "#e1e0ff",
+                        "inverse-primary": "#c0c1ff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#72351f",
+                        "on-tertiary-fixed": "#390c00",
+                        "surface": "#fcf8ff",
+                        "outline": "#777681",
+                        "on-secondary-container": "#364285",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f6f2f9",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#464650",
+                        "on-primary-fixed": "#0f1056",
+                        "on-primary-container": "#7d7fc7",
+                        "surface-container-high": "#eae7ed",
+                        "primary": "#010025",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e4e1e8",
+                        "on-primary-fixed-variant": "#3d4083",
+                        "surface-tint": "#55589c",
+                        "surface-variant": "#e4e1e8",
+                        "tertiary-fixed": "#ffdbd0",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#bf7158",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#031158",
+                        "inverse-on-surface": "#f3eff6",
+                        "on-secondary-fixed-variant": "#354185",
+                        "background": "#fcf8ff",
+                        "surface-container": "#f0ecf3",
+                        "surface-bright": "#fcf8ff",
+                        "on-background": "#1b1b20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "container-max-width": "1440px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1-mobile": ["Inter"],
+                        "h1": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "h1-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "h1": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Soft Professional Shadow */
+        .shadow-professional {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .drag-active {
+            border-color: #121358;
+            background-color: #f0ecf3;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-[280px] bg-surface-container-lowest border-r border-outline-variant flex flex-col p-stack-md gap-stack-sm z-20">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-3 py-4 mb-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined fill text-h3">corporate_fare</span>
+</div>
+<div>
+<h1 class="text-h3 font-h3 font-bold text-primary">HR Portal</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Enterprise Suite</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-1 flex-1 overflow-y-auto">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<!-- Request Leave (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold bg-secondary-container text-label-md font-label-md scale-[0.98] transition-transform duration-150" href="#">
+<span class="material-symbols-outlined fill">event_busy</span>
+                Request Leave
+            </a>
+<!-- Team Calendar -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                Team Calendar
+            </a>
+<!-- Approval Inbox -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">move_to_inbox</span>
+                Approval Inbox
+            </a>
+<!-- Employee Data -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">badge</span>
+                Employee Data
+            </a>
+<!-- Reports -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                Reports
+            </a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+<!-- User Profile Snippet (Bottom) -->
+<div class="mt-auto pt-4 border-t border-outline-variant flex items-center gap-3 px-3">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of an employee in business casual attire against a clean, light grey studio background. Soft, flattering high-key lighting creates a modern and approachable corporate profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkih4jF7rfGir2cDYjqg-G757KxyAbhE7hlP5vHp0vuI7XN-ZrxxdBkdPDHKe7dFTAEjdWqqIzeZWwzb5ghLejBEdUC7fhUqnbwQiOZ-qFKPg0gKw7Ewxb4m4KmSv8qYZcxlcMMVUJyzW7RQ3wOyONBHSfUoI05R9s-egp-gi2FJ_gx1aMh0aYzchSLXB_1ajkhMObhu-w6Uyqq9scHjaAWUwOvcHRfW4uGVCCo0pH3Iu6sOp0hpE0"/>
+<div>
+<p class="text-label-md font-label-md text-on-surface truncate">Budi Santoso</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant truncate">Staff IT</p>
+</div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-[280px] flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface border-b border-outline-variant shadow-sm flex justify-between items-center px-margin-desktop z-10">
+<!-- Left: Brand / Title Placeholder -->
+<div class="text-h2 font-h2 font-bold text-primary flex items-center gap-2">
+<!-- Search component structure based on "search_bar": "on_left" -->
+<div class="relative hidden lg:block w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full text-body-sm font-body-sm focus:outline-none focus:border-primary-container transition-colors" placeholder="Search..." type="text"/>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container rounded-lg text-label-md font-label-md font-bold hover:bg-surface-tint transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Request
+                </button>
+</div>
+</header>
+<!-- Page ContentCanvas -->
+<main class="mt-16 p-margin-desktop max-w-container-max-width mx-auto w-full flex-1 flex flex-col gap-stack-lg">
+<!-- Page Header -->
+<div>
+<nav aria-label="Breadcrumb" class="flex text-label-sm font-label-sm text-on-surface-variant mb-2">
+<ol class="inline-flex items-center space-x-1 md:space-x-2">
+<li class="inline-flex items-center">
+<a class="hover:text-primary transition-colors" href="#">HR Portal</a>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[16px] mx-1">chevron_right</span>
+<span class="text-on-surface">Pengajuan Cuti</span>
+</div>
+</li>
+</ol>
+</nav>
+<h2 class="text-h1 font-h1 text-primary">Formulir Pengajuan Cuti</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Silakan lengkapi rincian di bawah ini untuk mengajukan permohonan cuti Anda.</p>
+</div>
+<!-- Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Main Form (Bento Style) -->
+<div class="lg:col-span-8 flex flex-col gap-stack-md">
+<form class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-professional p-stack-lg flex flex-col gap-stack-lg">
+<!-- Section: Leave Details -->
+<div class="flex flex-col gap-stack-md border-b border-surface-container-high pb-stack-md">
+<h3 class="text-h3 font-h3 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">format_list_bulleted</span>
+                                Rincian Cuti
+                            </h3>
+<!-- Leave Type -->
+<div>
+<label class="text-label-md font-label-md text-on-surface block mb-1" for="leave_type">Jenis Cuti <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors cursor-pointer" id="leave_type">
+<option disabled="" selected="" value="">Pilih jenis cuti...</option>
+<option value="annual">Cuti Tahunan</option>
+<option value="sick">Cuti Sakit</option>
+<option value="maternity">Cuti Melahirkan</option>
+<option value="unpaid">Cuti di Luar Tanggungan</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+<!-- Dates Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div>
+<label class="text-label-md font-label-md text-on-surface block mb-1" for="start_date">Tanggal Mulai <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="start_date" type="date"/>
+</div>
+</div>
+<div>
+<label class="text-label-md font-label-md text-on-surface block mb-1" for="end_date">Tanggal Selesai <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="end_date" type="date"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Delegation -->
+<div class="flex flex-col gap-stack-md border-b border-surface-container-high pb-stack-md">
+<h3 class="text-h3 font-h3 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">qr_code_2</span>
+                                Pendelegasian Tugas
+                            </h3>
+<div>
+<label class="text-label-md font-label-md text-on-surface block mb-1" for="pic">Pejabat Pengganti Sementara (Pjs) / PIC <span class="text-error">*</span></label>
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-2">Pilih rekan kerja yang akan menangani tanggung jawab Anda selama cuti.</p>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="pic" placeholder="Cari nama karyawan..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Section: Reason & Attachments -->
+<div class="flex flex-col gap-stack-md">
+<h3 class="text-h3 font-h3 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">description</span>
+                                Keterangan Tambahan
+                            </h3>
+<div>
+<label class="text-label-md font-label-md text-on-surface block mb-1" for="reason">Alasan Cuti <span class="text-error">*</span></label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors resize-y" id="reason" placeholder="Tuliskan rincian alasan pengajuan cuti Anda..." rows="3"></textarea>
+</div>
+<!-- Drag and Drop Upload -->
+<div>
+<label class="text-label-md font-label-md text-on-surface block mb-1">Dokumen Pendukung (Opsional)</label>
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-2">Wajib diunggah untuk Cuti Sakit lebih dari 2 hari atau Cuti Melahirkan.</p>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center text-center bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer relative" id="dropzone">
+<input accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" multiple="" type="file"/>
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center text-on-primary-fixed mb-3">
+<span class="material-symbols-outlined">cloud_upload</span>
+</div>
+<p class="text-body-md font-body-md text-primary font-medium">Klik untuk mengunggah atau tarik file ke sini</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">Maks. ukuran file: 5MB. Format: PDF, JPG, PNG.</p>
+</div>
+</div>
+</div>
+<!-- Form Actions -->
+<div class="flex items-center justify-end gap-3 pt-4 mt-2">
+<button class="px-6 py-2.5 rounded-lg border border-outline-variant text-on-surface-variant text-label-md font-label-md font-bold hover:bg-surface-container-high transition-colors" type="button">
+                                Batal
+                            </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary-container text-on-primary-container text-label-md font-label-md font-bold hover:bg-surface-tint transition-colors shadow-sm flex items-center gap-2" type="submit">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                                Ajukan Cuti
+                            </button>
+</div>
+</form>
+</div>
+<!-- Right Column: Real-time Balance Checker (Sticky Bento Card) -->
+<div class="lg:col-span-4 sticky top-[88px]">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-professional p-stack-md flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-surface-container-high">
+<h3 class="text-h3 font-h3 text-on-surface">Simulasi Saldo</h3>
+<span class="material-symbols-outlined text-outline">account_balance_wallet</span>
+</div>
+<!-- Info Rows -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Jenis Cuti</span>
+<span class="text-label-md font-label-md text-on-surface">Cuti Tahunan</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Sisa Saldo Saat Ini</span>
+<span class="text-label-md font-label-md text-primary-container bg-primary-fixed px-2 py-0.5 rounded-md">12 Hari</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Estimasi Pemotongan</span>
+<span class="text-label-md font-label-md text-error bg-error-container px-2 py-0.5 rounded-md">- 3 Hari</span>
+</div>
+</div>
+<!-- Final Balance Calculation -->
+<div class="mt-2 pt-4 border-t border-surface-container-high bg-surface-container-low -mx-stack-md -mb-stack-md p-stack-md rounded-b-xl flex justify-between items-center">
+<span class="text-body-md font-body-md font-bold text-on-surface">Estimasi Saldo Akhir</span>
+<span class="text-h2 font-h2 font-bold text-primary">9 Hari</span>
+</div>
+</div>
+<!-- Helper Text under widget -->
+<div class="mt-4 flex gap-2 p-3 bg-surface-variant rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">info</span>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Simulasi ini hanya perkiraan. Saldo riil akan diperbarui setelah pengajuan disetujui oleh atasan dan HR.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Script for Drag & Drop Visuals -->
+<script>
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = dropzone.querySelector('input[type="file"]');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropzone.classList.add('drag-active');
+        }
+
+        function unhighlight(e) {
+            dropzone.classList.remove('drag-active');
+        }
+
+        dropzone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+            
+            // Minimal mock logic to show a file was added visually
+            if(files.length > 0) {
+                const p = dropzone.querySelector('p.text-primary');
+                p.textContent = `${files.length} file(s) terpilih`;
+            }
+        }
+        
+        fileInput.addEventListener('change', function() {
+            if(this.files.length > 0) {
+                const p = dropzone.querySelector('p.text-primary');
+                p.textContent = `${this.files.length} file(s) terpilih`;
+            }
+        });
+    </script>
+</body></html>

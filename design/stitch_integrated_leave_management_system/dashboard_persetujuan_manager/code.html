@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard Persetujuan Manajer - Portal SDM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#a6b1fd",
+                    "secondary": "#4e599e",
+                    "inverse-surface": "#303035",
+                    "tertiary-fixed-dim": "#ffb59d",
+                    "tertiary-container": "#3d0d00",
+                    "outline-variant": "#c7c5d2",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "primary-container": "#121358",
+                    "tertiary": "#0e0100",
+                    "on-surface": "#1b1b20",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#dee0ff",
+                    "secondary-fixed-dim": "#bbc3ff",
+                    "surface-dim": "#dcd9df",
+                    "primary-fixed": "#e1e0ff",
+                    "inverse-primary": "#c0c1ff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#72351f",
+                    "on-tertiary-fixed": "#390c00",
+                    "surface": "#fcf8ff",
+                    "outline": "#777681",
+                    "on-secondary-container": "#364285",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f6f2f9",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#464650",
+                    "on-primary-fixed": "#0f1056",
+                    "on-primary-container": "#7d7fc7",
+                    "surface-container-high": "#eae7ed",
+                    "primary": "#010025",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e4e1e8",
+                    "on-primary-fixed-variant": "#3d4083",
+                    "surface-tint": "#55589c",
+                    "surface-variant": "#e4e1e8",
+                    "tertiary-fixed": "#ffdbd0",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#bf7158",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#031158",
+                    "inverse-on-surface": "#f3eff6",
+                    "on-secondary-fixed-variant": "#354185",
+                    "background": "#fcf8ff",
+                    "surface-container": "#f0ecf3",
+                    "surface-bright": "#fcf8ff",
+                    "on-background": "#1b1b20",
+                    "royal-blue": "#232F72",
+                    "steel-blue": "#2F578A",
+                    "teal-accent": "#36ADA3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "margin-desktop": "40px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "container-max-width": "1440px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "h1-mobile": ["Inter"],
+                    "h1": ["Inter"],
+                    "label-md": ["Inter"],
+                    "h3": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h2": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "h1-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "h1": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Shadows for Corporate Modern look */
+        .shadow-prof {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        /* Specific header colors requested */
+        .text-royal-blue { color: #232F72; }
+        .text-steel-blue { color: #2F578A; }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface min-h-screen flex">
+<!-- SideNavBar (from JSON) -->
+<nav class="hidden md:flex flex-col bg-surface-container-lowest dark:bg-surface-container-low fixed left-0 top-0 h-screen w-[280px] border-r border-outline-variant dark:border-outline p-stack-md gap-stack-sm z-40">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 mb-stack-lg px-2">
+<img alt="HR Management Logo" class="w-8 h-8 rounded-full object-cover" data-alt="A clean, modern corporate logo for an HR portal featuring a geometric abstract shape in deep navy blue and teal accents, set against a pristine white background with soft, professional studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD70dbqoYQieJnisSav_E5atxtdZYTEBEfG_lx_pm9Q124BujjXOtdvcQ4KQFMm47P4SO7wG87-C31B35BgOgCJZ-QkrOP0LlptQUENBTvwHNld5_3MZ1omUVtJSt990aoqBVMzdw3O4aCKq2jMWtuTDTSqKILqZEa7xFiFLBoBC1ZXmZAghd4JhZltEoIf33h6MchjjKVPr-4qQ3Kds-iAw8GXSLfod2zvZl5wpKfT87c649g7HGr4"/>
+<div>
+<h1 class="text-h3 font-h3 font-bold text-primary dark:text-primary-fixed">HR Portal</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Enterprise Suite</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-1 w-full">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">event_busy</span>
+<span class="text-label-md font-label-md">Request Leave</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-label-md font-label-md">Team Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed font-bold bg-secondary-container dark:bg-secondary-container scale-[0.98] transition-transform duration-150" href="#">
+<span class="material-symbols-outlined fill">move_to_inbox</span>
+<span class="text-label-md font-label-md">Approval Inbox</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-label-md font-label-md">Employee Data</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="text-label-md font-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors mt-auto" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar (from JSON) & Main Content Area -->
+<div class="flex-1 md:ml-[280px] flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim fixed top-0 right-0 w-full md:w-[calc(100%-280px)] h-16 border-b border-outline-variant dark:border-outline shadow-sm z-30 flex justify-between items-center px-margin-mobile md:px-margin-desktop">
+<!-- Mobile Menu Toggle & Title -->
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center bg-surface-container rounded-full px-4 py-2 border border-outline-variant focus-within:border-[#232F72] focus-within:border-2 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md text-on-surface w-48" placeholder="Cari..." type="text"/>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+<button class="hidden sm:flex items-center gap-2 bg-[#121358] text-white px-4 py-2 rounded-lg text-label-md font-label-md hover:bg-primary transition-colors shadow-prof">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Request
+                </button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden ml-2 cursor-pointer">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of an Indonesian female HR manager in a modern office setting. She is wearing a smart dark blue blazer over a crisp white shirt, smiling warmly. Natural, bright office lighting highlights a clean, corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmVAvl0RPduU3YT3QwUGk_hp0N5R1DRH3zGwmhOJlXkM2YfxxiP_5TWoqOJhZ07StcBdALv7lsE6EC-wEuya7QzQ8aNXrVHQbXzWN4B8Rym7-9EV8oKLFsbczI1xxfq03dGPpYlmiuWCJExyFznHS6BC2Ij1nlzO7t-MU7FkqxafGegdmAriarUulHkY5ObLvOaMmXwEkC8KRtHQYLyfXpmlmvyFLmKvgEK0wmXJVA-BgcqgGZi3sd"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 p-margin-mobile md:p-margin-desktop overflow-y-auto">
+<!-- Page Header -->
+<div class="mb-stack-lg">
+<h2 class="text-h1 font-h1 text-royal-blue mb-2">Kotak Masuk Persetujuan</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Tinjau dan kelola pengajuan cuti tim Anda untuk bulan ini.</p>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Analytics Panel (Left/Top) -->
+<div class="lg:col-span-4 flex flex-col gap-stack-md">
+<!-- Team Availability Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-prof border border-outline-variant">
+<h3 class="text-h3 font-h3 text-steel-blue mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">groups</span>
+                            Ketersediaan Tim
+                        </h3>
+<div class="flex items-center justify-between mb-4">
+<div class="text-center">
+<div class="text-h1 font-h1 text-primary">24</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Hadir</div>
+</div>
+<div class="w-px h-12 bg-outline-variant"></div>
+<div class="text-center">
+<div class="text-h1 font-h1 text-[#ba1a1a]">3</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Cuti</div>
+</div>
+<div class="w-px h-12 bg-outline-variant"></div>
+<div class="text-center">
+<div class="text-h1 font-h1 text-[#2F578A]">1</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Sakit</div>
+</div>
+</div>
+<!-- Mini Chart Placeholder -->
+<div class="mt-6 relative h-32 bg-surface-container rounded-lg overflow-hidden flex items-end px-4 gap-2 pb-2">
+<div class="w-1/5 bg-teal-accent h-3/4 rounded-t-sm opacity-80"></div>
+<div class="w-1/5 bg-teal-accent h-full rounded-t-sm"></div>
+<div class="w-1/5 bg-outline-variant h-1/2 rounded-t-sm opacity-50"></div>
+<div class="w-1/5 bg-teal-accent h-4/5 rounded-t-sm opacity-90"></div>
+<div class="w-1/5 bg-outline-variant h-1/4 rounded-t-sm opacity-50"></div>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant text-center mt-2">Tren Cuti Bulanan</p>
+</div>
+<!-- Quick Actions -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-prof border border-outline-variant">
+<h3 class="text-h3 font-h3 text-steel-blue mb-4">Aksi Cepat</h3>
+<div class="space-y-3">
+<button class="w-full text-left px-4 py-3 rounded-lg border border-outline-variant hover:bg-surface-container flex items-center justify-between transition-colors">
+<span class="text-body-md font-body-md">Setujui Semua (5)</span>
+<span class="material-symbols-outlined text-teal-accent">check_circle</span>
+</button>
+<button class="w-full text-left px-4 py-3 rounded-lg border border-outline-variant hover:bg-surface-container flex items-center justify-between transition-colors">
+<span class="text-body-md font-body-md">Unduh Laporan PDF</span>
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Inbox & Calendar Panel (Right/Bottom) -->
+<div class="lg:col-span-8 flex flex-col gap-stack-md">
+<!-- Approval Inbox Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-prof border border-outline-variant overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface">
+<h3 class="text-h3 font-h3 text-royal-blue flex items-center gap-2">
+<span class="material-symbols-outlined">pending_actions</span>
+                                Menunggu Persetujuan
+                            </h3>
+<span class="bg-[#ba1a1a] text-white text-label-sm font-label-sm px-2 py-1 rounded-full">5 Baru</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant">
+<th class="py-3 px-6 text-label-md font-label-md text-on-surface-variant font-semibold">Karyawan</th>
+<th class="py-3 px-6 text-label-md font-label-md text-on-surface-variant font-semibold">Tipe &amp; Tanggal</th>
+<th class="py-3 px-6 text-label-md font-label-md text-on-surface-variant font-semibold">Status</th>
+<th class="py-3 px-6 text-label-md font-label-md text-on-surface-variant font-semibold text-right">Aksi</th>
+</tr>
+</thead>
+<tbody>
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<img alt="Budi Santoso" class="w-10 h-10 rounded-full object-cover" data-alt="A small circular profile photo of a young Indonesian male software engineer with short black hair, wearing a casual grey t-shirt against a light grey studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE7P3t8JaErIxYHsHqUyvpFrZTW9n4YaaQ1GmNx4bN056-KZRi09h6QpEdyWTVbudJ2E7o_dtLm5bZU8d8uqY1Gtz7SgBK63AoeRI-HHu6OKI2fwA7lUNAkPQoQ66jgXuarR571K919jvc-6Qm6Ll4zSUSc7HuLeuEGpdvPoihDWNfMavvHMvHAWTir5sBul6HqeTELxkOHB5Gb4fWzMOqKpuRWRXvgdRZF5BFf1s2GDZFqBtMcbCQ"/>
+<div>
+<p class="text-body-md font-body-md font-semibold text-on-surface">Budi Santoso</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Sr. Developer</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<p class="text-body-md font-body-md font-medium">Cuti Tahunan</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">12 Okt - 15 Okt (3 Hari)</p>
+</td>
+<td class="py-4 px-6">
+<span class="bg-amber-100 text-amber-800 text-label-sm font-label-sm px-3 py-1 rounded-full inline-block">Menunggu</span>
+</td>
+<td class="py-4 px-6 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 rounded-lg text-teal-accent hover:bg-teal-50 transition-colors" title="Setujui">
+<span class="material-symbols-outlined">check</span>
+</button>
+<button class="p-2 rounded-lg text-[#ba1a1a] hover:bg-red-50 transition-colors" title="Tolak">
+<span class="material-symbols-outlined">close</span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors border border-outline-variant" title="Tambah Catatan">
+<span class="material-symbols-outlined">edit_note</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest/50 transition-colors bg-surface-container-low/30">
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<img alt="Siti Aminah" class="w-10 h-10 rounded-full object-cover" data-alt="A small circular profile photo of a professional Indonesian female designer with glasses, wearing a light blue blouse, smiling gently against a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJaP8eGXNbn11wSsGPAC3ifPFSSulso8sZ61tbJaDkiZDzZ3h1DoXACP6r1Mtu3J0EZAsM0PKr2rDF14RbEzdBHpTdY6rrkiQPkY1nuYRbNxhiDbd0AQBQ7Tu8HVPJf1AIMTM4d-Rhs6VK3mGPQIfKMpimeAUFghATRNcjl4bYseGeoi6g68ell5KVfpArsh3uHCqzLko4yVQBPMviqM6EpnCHa1HGLOB-_SBeL6CsjHPnEgzWOP0k"/>
+<div>
+<p class="text-body-md font-body-md font-semibold text-on-surface">Siti Aminah</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">UX Designer</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<p class="text-body-md font-body-md font-medium">Cuti Sakit</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">10 Okt (1 Hari)</p>
+</td>
+<td class="py-4 px-6">
+<span class="bg-amber-100 text-amber-800 text-label-sm font-label-sm px-3 py-1 rounded-full inline-block">Menunggu</span>
+</td>
+<td class="py-4 px-6 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 rounded-lg text-teal-accent hover:bg-teal-50 transition-colors" title="Setujui">
+<span class="material-symbols-outlined">check</span>
+</button>
+<button class="p-2 rounded-lg text-[#ba1a1a] hover:bg-red-50 transition-colors" title="Tolak">
+<span class="material-symbols-outlined">close</span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors border border-outline-variant" title="Tambah Catatan">
+<span class="material-symbols-outlined">edit_note</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant text-center bg-surface">
+<button class="text-label-md font-label-md text-[#2F578A] hover:underline">Lihat Semua Pengajuan</button>
+</div>
+</div>
+<!-- Team Calendar Mini-View -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-prof border border-outline-variant">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-h3 font-h3 text-steel-blue flex items-center gap-2">
+<span class="material-symbols-outlined">calendar_month</span>
+                                Kalender Tim (Oktober)
+                            </h3>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<!-- Simple visual representation of a calendar week to avoid huge tables -->
+<div class="grid grid-cols-7 gap-2 mb-2">
+<div class="text-center text-label-sm font-label-sm text-on-surface-variant">Sen</div>
+<div class="text-center text-label-sm font-label-sm text-on-surface-variant">Sel</div>
+<div class="text-center text-label-sm font-label-sm text-on-surface-variant">Rab</div>
+<div class="text-center text-label-sm font-label-sm text-on-surface-variant">Kam</div>
+<div class="text-center text-label-sm font-label-sm text-on-surface-variant">Jum</div>
+<div class="text-center text-label-sm font-label-sm text-outline">Sab</div>
+<div class="text-center text-label-sm font-label-sm text-outline">Min</div>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<!-- Week 1 -->
+<div class="h-16 border border-outline-variant rounded-md p-1 bg-surface relative">
+<span class="text-label-sm text-on-surface-variant">9</span>
+</div>
+<div class="h-16 border border-outline-variant rounded-md p-1 bg-surface relative">
+<span class="text-label-sm text-on-surface-variant">10</span>
+<div class="absolute bottom-1 left-1 right-1 bg-amber-100 text-amber-800 text-[10px] px-1 rounded truncate">Siti (Sakit)</div>
+</div>
+<div class="h-16 border border-outline-variant rounded-md p-1 bg-surface relative">
+<span class="text-label-sm text-on-surface-variant">11</span>
+</div>
+<div class="h-16 border border-[#232F72] rounded-md p-1 bg-primary-fixed/20 relative">
+<span class="text-label-sm font-bold text-[#232F72]">12</span>
+<div class="absolute bottom-1 left-1 right-1 bg-surface-variant text-on-surface-variant text-[10px] px-1 rounded truncate">Budi (Cuti)</div>
+</div>
+<div class="h-16 border border-outline-variant rounded-md p-1 bg-surface relative">
+<span class="text-label-sm text-on-surface-variant">13</span>
+<div class="absolute bottom-1 left-1 right-1 bg-surface-variant text-on-surface-variant text-[10px] px-1 rounded truncate">Budi (Cuti)</div>
+</div>
+<div class="h-16 border border-outline-variant/50 rounded-md p-1 bg-surface-container-low relative">
+<span class="text-label-sm text-outline">14</span>
+</div>
+<div class="h-16 border border-outline-variant/50 rounded-md p-1 bg-surface-container-low relative">
+<span class="text-label-sm text-outline">15</span>
+</div>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-4 italic">*Menampilkan minggu ini. Buka kalender penuh untuk detail.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

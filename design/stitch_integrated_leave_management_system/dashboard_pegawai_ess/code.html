@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard Karyawan - HR Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#a6b1fd",
+                        "secondary": "#4e599e",
+                        "inverse-surface": "#303035",
+                        "tertiary-fixed-dim": "#ffb59d",
+                        "tertiary-container": "#3d0d00",
+                        "outline-variant": "#c7c5d2",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "primary-container": "#121358",
+                        "tertiary": "#0e0100",
+                        "on-surface": "#1b1b20",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#dee0ff",
+                        "secondary-fixed-dim": "#bbc3ff",
+                        "surface-dim": "#dcd9df",
+                        "primary-fixed": "#e1e0ff",
+                        "inverse-primary": "#c0c1ff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#72351f",
+                        "on-tertiary-fixed": "#390c00",
+                        "surface": "#fcf8ff",
+                        "outline": "#777681",
+                        "on-secondary-container": "#364285",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f6f2f9",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#464650",
+                        "on-primary-fixed": "#0f1056",
+                        "on-primary-container": "#7d7fc7",
+                        "surface-container-high": "#eae7ed",
+                        "primary": "#010025",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e4e1e8",
+                        "on-primary-fixed-variant": "#3d4083",
+                        "surface-tint": "#55589c",
+                        "surface-variant": "#e4e1e8",
+                        "tertiary-fixed": "#ffdbd0",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#bf7158",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#031158",
+                        "inverse-on-surface": "#f3eff6",
+                        "on-secondary-fixed-variant": "#354185",
+                        "background": "#fcf8ff",
+                        "surface-container": "#f0ecf3",
+                        "surface-bright": "#fcf8ff",
+                        "on-background": "#1b1b20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "container-max-width": "1440px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1-mobile": ["Inter"],
+                        "h1": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "h1-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "h1": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shadow-soft {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden md:flex flex-col h-full p-stack-md gap-stack-sm bg-surface-container-lowest border-r border-outline-variant fixed left-0 top-0 w-[280px] z-40">
+<div class="flex items-center gap-stack-md px-stack-sm mb-stack-lg mt-stack-sm">
+<span class="material-symbols-outlined text-h1 text-primary">work</span>
+<div>
+<h1 class="text-h3 font-h3 text-primary">HR Portal</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Enterprise Suite</p>
+</div>
+</div>
+<div class="flex flex-col gap-unit">
+<a class="flex items-center gap-stack-md p-stack-sm text-primary font-bold bg-secondary-container rounded-lg text-label-md font-label-md scale-[0.98] transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-stack-md p-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">event_busy</span>
+                Request Leave
+            </a>
+<a class="flex items-center gap-stack-md p-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                Team Calendar
+            </a>
+<a class="flex items-center gap-stack-md p-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">move_to_inbox</span>
+                Approval Inbox
+            </a>
+<a class="flex items-center gap-stack-md p-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">badge</span>
+                Employee Data
+            </a>
+<a class="flex items-center gap-stack-md p-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                Reports
+            </a>
+<a class="flex items-center gap-stack-md p-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg text-label-md font-label-md mt-stack-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-280px)] h-16 bg-surface border-b border-outline-variant shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop z-30">
+<div class="flex items-center gap-stack-md">
+<button class="md:hidden text-on-surface"><span class="material-symbols-outlined">menu</span></button>
+<h2 class="text-h2 font-h2 font-bold text-primary hidden md:block">HR Portal</h2>
+</div>
+<div class="flex items-center gap-stack-lg">
+<div class="flex items-center gap-stack-sm">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-unit rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-unit rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="bg-primary-container text-on-primary-container px-stack-md py-2 rounded-lg text-label-md font-label-md hover:opacity-80 transition-opacity">
+                    New Request
+                </button>
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A small circular avatar of a professional employee in a corporate setting, bright lighting, modern office background, high quality, realistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5eFXnWICsd_-Vr9Xf3GwtUsREUmQnl7fTg2FLnSDibEHvKfkUACutuRCyWFpxeDPq0BY-zof1U0vEThTVIFmJ3m8jWqf3Rn8VcNzKbUau0Y_VIrtrcP6X4EZHmUNuOkYObsFAm10tawHIAOm5ti1THNbVDlzpPFv9vuwPx2cAabGqiLi2SUJxO5c_R4KPo5-y6L6LM53EB6NEMlcliDJXs3TIeuwvINe7F1-a9TDZqcO8NXLqz8nD"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-0 md:ml-[280px] pt-[88px] pb-margin-desktop px-margin-mobile md:px-margin-desktop min-h-screen">
+<div class="max-w-container-max-width mx-auto flex flex-col gap-stack-lg">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-stack-md">
+<div>
+<h2 class="text-h1-mobile font-h1-mobile md:text-h1 md:font-h1 text-primary">Selamat Pagi, Budi!</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-unit">Berikut adalah ringkasan kuota dan aktivitas cuti Anda.</p>
+</div>
+<button class="bg-primary-container text-on-primary border border-transparent px-6 py-3 rounded-lg text-label-md font-label-md shadow-sm hover:bg-primary transition-colors flex items-center gap-2 w-fit">
+<span class="material-symbols-outlined">edit_calendar</span>
+                    Ajukan Cuti
+                </button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Quotas & Activity -->
+<div class="lg:col-span-8 flex flex-col gap-stack-lg">
+<!-- Leave Quota Overview -->
+<section>
+<h3 class="text-h3 font-h3 text-on-surface mb-stack-md">Ringkasan Kuota Cuti</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<!-- Annual Leave Card -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant shadow-soft relative overflow-hidden group hover:border-primary-container transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary-container"></div>
+<div class="flex flex-col items-center justify-center pt-stack-sm">
+<h4 class="text-body-md font-body-md text-on-surface-variant mb-stack-sm text-center">Cuti Tahunan</h4>
+<div class="relative w-28 h-28 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="83, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-h2 font-h2 text-primary-container leading-none">10</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">/12 Hari</span>
+</div>
+</div>
+<p class="text-label-sm font-label-sm text-primary-container mt-stack-md bg-secondary-fixed px-3 py-1 rounded-full">Sisa 10 Hari</p>
+</div>
+</div>
+<!-- Sick Leave Card -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant shadow-soft relative overflow-hidden group hover:border-secondary transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<div class="flex flex-col items-center justify-center pt-stack-sm">
+<h4 class="text-body-md font-body-md text-on-surface-variant mb-stack-sm text-center">Cuti Sakit</h4>
+<div class="relative w-28 h-28 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="20, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-h2 font-h2 text-secondary leading-none">4</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">/5 Hari</span>
+</div>
+</div>
+<p class="text-label-sm font-label-sm text-secondary mt-stack-md bg-secondary-fixed-dim px-3 py-1 rounded-full">Sisa 4 Hari</p>
+</div>
+</div>
+<!-- Maternity Leave Card -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant shadow-soft relative overflow-hidden group hover:border-tertiary-fixed-dim transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-tertiary-fixed-dim"></div>
+<div class="flex flex-col items-center justify-center pt-stack-sm">
+<h4 class="text-body-md font-body-md text-on-surface-variant mb-stack-sm text-center">Cuti Melahirkan</h4>
+<div class="relative w-28 h-28 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-tertiary-fixed-dim" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-h2 font-h2 text-tertiary-container leading-none">90</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">/90 Hari</span>
+</div>
+</div>
+<p class="text-label-sm font-label-sm text-tertiary-container mt-stack-md bg-tertiary-fixed px-3 py-1 rounded-full">Tersedia 90 Hari</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity / History -->
+<section>
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="text-h3 font-h3 text-on-surface">Aktivitas Terbaru</h3>
+<a class="text-label-md font-label-md text-primary-container hover:underline flex items-center gap-1" href="#">
+                                Lihat Semua Riwayat
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-soft overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-3 px-4 text-label-sm font-label-sm text-on-surface-variant">Tipe Cuti</th>
+<th class="py-3 px-4 text-label-sm font-label-sm text-on-surface-variant">Tanggal</th>
+<th class="py-3 px-4 text-label-sm font-label-sm text-on-surface-variant">Durasi</th>
+<th class="py-3 px-4 text-label-sm font-label-sm text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="text-body-md font-body-md">
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="py-3 px-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">beach_access</span>
+                                                Cuti Tahunan
+                                            </td>
+<td class="py-3 px-4 text-on-surface-variant">12 Okt - 14 Okt 2023</td>
+<td class="py-3 px-4">3 Hari</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed text-on-primary-fixed">
+                                                    Disetujui
+                                                </span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="py-3 px-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">medical_services</span>
+                                                Cuti Sakit
+                                            </td>
+<td class="py-3 px-4 text-on-surface-variant">05 Sep 2023</td>
+<td class="py-3 px-4">1 Hari</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed text-on-primary-fixed">
+                                                    Disetujui
+                                                </span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="py-3 px-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">beach_access</span>
+                                                Cuti Tahunan
+                                            </td>
+<td class="py-3 px-4 text-on-surface-variant">25 Des - 29 Des 2023</td>
+<td class="py-3 px-4">5 Hari</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-fixed text-on-tertiary-fixed">
+                                                    Menunggu
+                                                </span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-high transition-colors">
+<td class="py-3 px-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">beach_access</span>
+                                                Cuti Tahunan
+                                            </td>
+<td class="py-3 px-4 text-on-surface-variant">17 Agu 2023</td>
+<td class="py-3 px-4">1 Hari</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container">
+                                                    Ditolak
+                                                </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-3 px-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">beach_access</span>
+                                                Cuti Tahunan
+                                            </td>
+<td class="py-3 px-4 text-on-surface-variant">01 Mei - 02 Mei 2023</td>
+<td class="py-3 px-4">2 Hari</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-primary-fixed text-on-primary-fixed">
+                                                    Disetujui
+                                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Calendar Widget -->
+<div class="lg:col-span-4 flex flex-col gap-stack-lg">
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-md shadow-soft">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="text-h3 font-h3 text-on-surface">Kalender Cuti</h3>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">chevron_left</span></button>
+<span class="text-label-md font-label-md">Oktober 2023</span>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<!-- Calendar Grid (Simplified for visual representation) -->
+<div class="grid grid-cols-7 gap-1 text-center mb-stack-md">
+<div class="text-label-sm font-label-sm text-on-surface-variant py-2">Sen</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant py-2">Sel</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant py-2">Rab</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant py-2">Kam</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant py-2">Jum</div>
+<div class="text-label-sm font-label-sm text-outline py-2">Sab</div>
+<div class="text-label-sm font-label-sm text-outline py-2">Min</div>
+<!-- Empty days -->
+<div class="p-2"></div>
+<div class="p-2"></div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">1</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">2</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">3</div>
+<div class="p-2 text-body-sm font-body-sm text-outline">4</div>
+<div class="p-2 text-body-sm font-body-sm text-outline">5</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">6</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">7</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">8</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">9</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">10</div>
+<div class="p-2 text-body-sm font-body-sm text-outline">11</div>
+<div class="p-2 text-body-sm font-body-sm bg-primary-container text-on-primary rounded-full w-8 h-8 mx-auto flex items-center justify-center">12</div>
+<div class="p-2 text-body-sm font-body-sm bg-primary-container text-on-primary rounded-full w-8 h-8 mx-auto flex items-center justify-center">13</div>
+<div class="p-2 text-body-sm font-body-sm bg-primary-container text-on-primary rounded-full w-8 h-8 mx-auto flex items-center justify-center">14</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">15</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">16</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">17</div>
+<div class="p-2 text-body-sm font-body-sm text-outline">18</div>
+<div class="p-2 text-body-sm font-body-sm text-outline">19</div>
+<!-- Remaining days omitted for brevity, represented up to 26 -->
+<div class="p-2 text-body-sm font-body-sm text-on-surface">20</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">21</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">22</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">23</div>
+<div class="p-2 text-body-sm font-body-sm text-on-surface">24</div>
+<div class="p-2 text-body-sm font-body-sm text-outline">25</div>
+<div class="p-2 text-body-sm font-body-sm text-outline">26</div>
+</div>
+<!-- Legend -->
+<div class="border-t border-outline-variant pt-stack-md mt-stack-md">
+<h4 class="text-label-sm font-label-sm text-on-surface-variant mb-stack-sm">Keterangan</h4>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="text-body-sm font-body-sm text-on-surface">Cuti Anda</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error-container border border-error"></div>
+<span class="text-body-sm font-body-sm text-on-surface">Hari Libur Nasional</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Info Banner -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-stack-md flex gap-stack-md items-start">
+<span class="material-symbols-outlined text-secondary">info</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface mb-1">Kebijakan Cuti 2023</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Sisa cuti tahunan yang tidak digunakan akan hangus pada akhir bulan Maret 2024. Pastikan Anda merencanakan cuti dengan baik.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
