@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-secondary-container: #a6b1fd;
+    --color-secondary: #4e599e;
+    --color-inverse-surface: #303035;
+    --color-tertiary-fixed-dim: #ffb59d;
+    --color-tertiary-container: #3d0d00;
+    --color-outline-variant: #c7c5d2;
+    --color-primary-fixed-dim: #c0c1ff;
+    --color-primary-container: #121358;
+    --color-tertiary: #0e0100;
+    --color-on-surface: #1b1b20;
+    --color-error-container: #ffdad6;
+    --color-secondary-fixed: #dee0ff;
+    --color-secondary-fixed-dim: #bbc3ff;
+    --color-surface-dim: #dcd9df;
+    --color-primary-fixed: #e1e0ff;
+    --color-inverse-primary: #c0c1ff;
+    --color-error: #ba1a1a;
+    --color-on-tertiary-fixed-variant: #72351f;
+    --color-on-tertiary-fixed: #390c00;
+    --color-surface: #fcf8ff;
+    --color-outline: #777681;
+    --color-on-secondary-container: #364285;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #f6f2f9;
+    --color-on-primary: #ffffff;
+    --color-on-surface-variant: #464650;
+    --color-on-primary-fixed: #0f1056;
+    --color-on-primary-container: #7d7fc7;
+    --color-surface-container-high: #eae7ed;
+    --color-primary: #010025;
+    --color-on-tertiary: #ffffff;
+    --color-surface-container-highest: #e4e1e8;
+    --color-on-primary-fixed-variant: #3d4083;
+    --color-surface-tint: #55589c;
+    --color-surface-variant: #e4e1e8;
+    --color-tertiary-fixed: #ffdbd0;
+    --color-on-secondary: #ffffff;
+    --color-on-error-container: #93000a;
+    --color-on-tertiary-container: #bf7158;
+    --color-on-error: #ffffff;
+    --color-on-secondary-fixed: #031158;
+    --color-inverse-on-surface: #f3eff6;
+    --color-on-secondary-fixed-variant: #354185;
+    --color-background: #fcf8ff;
+    --color-surface-container: #f0ecf3;
+    --color-surface-bright: #fcf8ff;
+    --color-on-background: #1b1b20;
+  }
+}
+
+@layer components {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .shadow-soft {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+}
