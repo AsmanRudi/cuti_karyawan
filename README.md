@@ -100,5 +100,5 @@ Base URL: `http://localhost:8000/api`
 ---
 
 <div align="center">
-  <p>Built with ❤️ for Technical Excellence.</p>
+  <p>Built with ❤️ for Rudi Asman Salim</p>
 </div>
