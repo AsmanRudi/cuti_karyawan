@@ -93,10 +93,6 @@ Base URL: `http://localhost:8000/api`
    php artisan serve
    ```
 
-**Test Credentials:**
-- **HR Admin:** `admin@example.com` (Pass: `password`)
-- **Employee:** `employee@example.com` (Pass: `password`)
-
 ---
 
 <div align="center">
