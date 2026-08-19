@@ -55,6 +55,11 @@
                     <span class="material-symbols-outlined">assessment</span>
                     Laporan
                 </a>
+                <div class="my-2 border-t border-surface-container-highest"></div>
+                <a class="flex items-center gap-stack-md p-stack-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg text-label-md font-label-md" href="{{ route('admin.users.create-admin') }}">
+                    <span class="material-symbols-outlined">shield_person</span>
+                    Tambah Admin
+                </a>
             @else
                 <a class="flex items-center gap-stack-md p-stack-sm {{ request()->routeIs('employee.dashboard') ? 'text-primary font-bold bg-secondary-container' : 'text-on-surface-variant hover:bg-surface-container-high' }} rounded-lg text-label-md font-label-md transition-colors" href="{{ route('employee.dashboard') }}">
                     <span class="material-symbols-outlined" style="{{ request()->routeIs('employee.dashboard') ? 'font-variation-settings: \'FILL\' 1;' : '' }}">dashboard</span>

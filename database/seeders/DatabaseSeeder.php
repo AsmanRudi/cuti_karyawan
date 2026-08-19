@@ -22,6 +22,24 @@ class DatabaseSeeder extends Seeder
             'role' => 'ADMIN',
         ]);
 
+        $employeeUser = User::factory()->create([
+            'name' => 'Budi Pegawai',
+            'email' => 'employee@example.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('password'),
+            'role' => 'EMPLOYEE',
+        ]);
+
+        \App\Models\Employee::create([
+            'user_id' => $employeeUser->id,
+            'employee_number' => 'EMP-001',
+            'phone' => '081234567890',
+            'position' => 'Staff IT',
+            'department' => 'Technology',
+            'join_date' => now()->subYears(2)->format('Y-m-d'),
+            'status' => 'ACTIVE',
+            'annual_leave_quota' => 12,
+        ]);
+
         $leaveTypes = [
             ['name' => 'Annual Leave', 'description' => 'Regular annual leave', 'default_days' => 12, 'is_active' => true],
             ['name' => 'Sick Leave', 'description' => 'Leave for medical reasons', 'default_days' => 14, 'is_active' => true],

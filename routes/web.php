@@ -19,12 +19,16 @@ use App\Http\Controllers\Admin\LeaveTypeController;
 use App\Http\Controllers\Admin\LeaveApprovalController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Employee\LeaveRequestController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
     
+    Route::get('/users/create-admin', [UserController::class, 'createAdmin'])->name('users.create-admin');
+    Route::post('/users/store-admin', [UserController::class, 'storeAdmin'])->name('users.store-admin');
+
     Route::resource('employees', EmployeeController::class);
     Route::resource('leavetypes', LeaveTypeController::class);
     
