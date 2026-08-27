@@ -1,1 +1,2 @@
 *.sqlite*
+.llm-chat-history/
